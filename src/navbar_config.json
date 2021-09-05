@@ -1,0 +1,5 @@
+{"navbars":[
+   {"navname":"Home", "to":"/"},
+   {"navname": "About Us", "to":"/about"},
+   {"navname": "Contact Us", "to":"/contact"}
+]}
