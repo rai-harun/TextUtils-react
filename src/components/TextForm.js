@@ -73,17 +73,18 @@ const TextForm = (props) => {
           style={{backgroundColor:props.mode === 'light'? 'white':props.textareaColor, color:props.mode === 'dark'? 'white':'black'}}
         ></textarea>
       </div>
-      <div className="btn btn-primary mb-3 me-3" onClick={handleUppercase}>UPPERCASE</div>
-      <div className="btn btn-secondary mb-3 me-3" onClick={handleLowercase}>lowercase</div>
-      <div className="btn btn-warning mb-3 me-3" onClick={handleSpaceRemover}>Remove Whitespace</div>
-      <div className="btn btn-info mb-3 me-3" onClick={handleTextClear}>Clear Text</div>
-      <div className="btn btn-danger mb-3 me-3" onClick={handleTextCopy}>Copy Text</div>
+      <button disabled = {text.length===0} className="btn btn-primary mb-3 me-3" onClick={handleUppercase}>UPPERCASE</button>
+      <button disabled = {text.length===0} className="btn btn-secondary mb-3 me-3" onClick={handleLowercase}>lowercase</button>
+      <button disabled = {text.length===0} className="btn btn-warning mb-3 me-3" onClick={handleSpaceRemover}>Remove Whitespace</button>
+      <button disabled = {text.length===0} className="btn btn-info mb-3 me-3" onClick={handleTextClear}>Clear Text</button>
+      <button disabled = {text.length===0} className="btn btn-danger mb-3 me-3" onClick={handleTextCopy}>Copy Text</button>
     </div>
 
     <div className="container my-2" style={{color:props.mode === 'dark'? 'white':'black'}}>
       <h1>Your text summary</h1>
-      <p>{text.split(" ").length<2?0:text.trim().split(" ").length} words, {text.length} characters</p>
-      <p>{text.split(" ").length < 2? 0:(0.008 * text.split(" ").length).toFixed(2)} mins read</p>
+      {/* <p>{text.split(" ").length<2?0:text.trim().split(" ").length} words, {text.length} characters</p> */}
+      <p>{text.split(" ").filter((element)=>{return element.length!==0}).length} words, {text.length} characters</p>
+      <p>{(0.008 * text.split(" ").filter((element)=>{return element.length!==0}).length).toFixed(2)} mins read</p>
       <h4>{text.length>0? text:'Write something the textbox above to preview here'}</h4>
     </div>
     </>
